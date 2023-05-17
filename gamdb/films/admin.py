@@ -1,11 +1,15 @@
 from django.contrib import admin
 
-# Register your models here.
-from .models import Movie
+from .models import Movie, Director, Genre, Actor, Comment
 
 class MovieAdmin(admin.ModelAdmin):
-    list_display = ['id', 'name', 'year']
+    list_display = ['id', 'name', 'year', 'director', 'genres_display']
     list_display_links = ['name']
-    pass
+    search_fields = ['name']
+    list_filter = ['genres', 'year']
 
 admin.site.register(Movie, MovieAdmin)
+admin.site.register(Director)
+admin.site.register(Genre)
+admin.site.register(Actor)
+admin.site.register(Comment)
